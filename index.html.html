@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fetchworks Solution LLP</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(16, 185, 129, 0.18),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #03110d,
+          #061c17,
+          #020907
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      padding: 50px 20px;
+    }
+
+    .company {
+      font-size: 42px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .company span {
+      color: #19c37d;
+    }
+
+    .tagline {
+      font-size: 21px;
+      color: #d8e7e1;
+      margin-bottom: 35px;
+      line-height: 1.5;
+    }
+
+    .tagline span {
+      color: #d4af6a;
+    }
+
+    .line {
+      width: 70px;
+      height: 3px;
+      background: #19c37d;
+      margin: 0 auto 35px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 68px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: #19c37d;
+    }
+
+    .description {
+      max-width: 650px;
+      margin: 0 auto 35px;
+      color: #9fb4ad;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .launch {
+      color: #d4af6a;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .box {
+      width: 110px;
+      padding: 20px 10px;
+
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(25, 195, 125, 0.35);
+      border-radius: 15px;
+    }
+
+    .number {
+      display: block;
+      font-size: 35px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .label {
+      color: #8fa69e;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact {
+      display: inline-block;
+      padding: 15px 35px;
+
+      background: #19c37d;
+      color: #ffffff;
+
+      text-decoration: none;
+      font-weight: bold;
+
+      border-radius: 30px;
+
+      transition: 0.3s;
+    }
+
+    .contact:hover {
+      background: #0fa968;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 45px;
+      color: #61756e;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        padding: 35px 15px;
+      }
+
+      .company {
+        font-size: 27px;
+      }
+
+      .tagline {
+        font-size: 17px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      .description {
+        font-size: 16px;
+      }
+
+      .box {
+        width: 75px;
+        padding: 15px 5px;
+      }
+
+      .number {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="company">
+      FETCHWORKS <span>SOLUTION LLP</span>
+    </div>
+
+    <div class="tagline">
+      <span>Efficient Resources Gathered Here...</span>
+      Ready to Hire Them.
+    </div>
+
+    <div class="line"></div>
+
+    <h1>
+      We're <span>Coming Soon</span>
+    </h1>
+
+    <p class="description">
+      Connecting businesses with efficient technology resources.
+      We're getting everything ready for our official launch.
+    </p>
+
+    <div class="launch">
+      Official Launch — 1 December 2026
+    </div>
+
+    <div class="countdown">
+
+      <div class="box">
+        <span class="number" id="days">00</span>
+        <span class="label">Days</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="hours">00</span>
+        <span class="label">Hours</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="minutes">00</span>
+        <span class="label">Minutes</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="seconds">00</span>
+        <span class="label">Seconds</span>
+      </div>
+
+    </div>
+
+    <a
+      class="contact"
+      href="mailto:contact@fetchworks.in">
+      Contact Us
+    </a>
+
+    <div class="footer">
+      © 2026 Fetchworks Solution LLP. All Rights Reserved.
+    </div>
+
+  </div>
+
+
+  <script>
+
+    const launchDate =
+      new Date("2026-12-01T00:00:00+05:30").getTime();
+
+    function countdown() {
+
+      const now = new Date().getTime();
+
+      const difference = launchDate - now;
+
+      if (difference <= 0) {
+
+        document.querySelector(".countdown").innerHTML =
+          "<h2>We Are Live!</h2>";
+
+        return;
+      }
+
+      const days =
+        Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        );
+
+      const hours =
+        Math.floor(
+          (difference / (1000 * 60 * 60)) % 24
+        );
+
+      const minutes =
+        Math.floor(
+          (difference / (1000 * 60)) % 60
+        );
+
+      const seconds =
+        Math.floor(
+          (difference / 1000) % 60
+        );
+
+      document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+      document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+      document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+      document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+    }
+
+    countdown();
+
+    setInterval(countdown, 1000);
+
+  </script>
+
+</body>
+</html>
